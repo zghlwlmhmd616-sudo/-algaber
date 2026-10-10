@@ -51,6 +51,6 @@ The storefront uses Supabase for persistent products, orders, reviews, settings,
 
 ## Publish with GitHub Pages
 
-Create a GitHub repository and push the project to its `main` branch. In **Settings > Secrets and variables > Actions > Variables**, add `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY`. The workflow at `.github/workflows/deploy-pages.yml` enables Pages and deploys on each push to `main`. The site URL will be `https://OWNER.github.io/REPOSITORY/`.
+Push the project to the `main` branch. The workflow at `.github/workflows/deploy-pages.yml` enables Pages and deploys on each push to `main`. It contains only the Supabase Project URL and Publishable key, which are intended for browser use; never add a `service_role` key. The site URL will be `https://OWNER.github.io/REPOSITORY/`.
 
 Demo products and reviews are not copied into production automatically. Add real products through the admin dashboard after setup. Vodafone Cash deposits are recorded for manual verification; no online payment gateway is connected.

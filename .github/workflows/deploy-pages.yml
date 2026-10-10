@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      VITE_SUPABASE_URL: https://addnfpikyewqkzcxrwwp.supabase.co
+      VITE_SUPABASE_ANON_KEY: sb_publishable_efiNOatb8sqDd4qqldC38A_xZIMC0VE
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
@@ -31,14 +34,8 @@ jobs:
         run: |
           test -n "$VITE_SUPABASE_URL" || (echo "Missing VITE_SUPABASE_URL repository variable" && exit 1)
           test -n "$VITE_SUPABASE_ANON_KEY" || (echo "Missing VITE_SUPABASE_ANON_KEY repository variable" && exit 1)
-        env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
       - name: Build site
         run: npm run build
-        env:
-          VITE_SUPABASE_URL: ${{ vars.VITE_SUPABASE_URL }}
-          VITE_SUPABASE_ANON_KEY: ${{ vars.VITE_SUPABASE_ANON_KEY }}
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
         with:
